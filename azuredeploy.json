@@ -25,17 +25,17 @@
     "variables": {},
     "resources": [{
         "name": "[parameters('StorageAccount')]",
+        "apiVersion":"2019-04-01",
         "type": "Microsoft.Storage/storageAccounts",
-        "apiVersion": "2015-06-15",
         "location": "[resourceGroup().location]",
         "kind": "StorageV2",
-        "sku": "[parameters('storageAccountType')]",
+        "sku":"[parameters('storageAccountType')]",
         "tags": {
             "displayName": "[parameters('StorageAccount')]"
         },
         "properties": {
-            
         }
-    }],
+    }
+    ],
     "outputs": {}
 }
