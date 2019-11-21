@@ -1,0 +1,20 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "adminUsername": {
+        "value": "gobinath"
+      },
+      "adminPasswordOrKey": {
+        "reference": {
+            "keyVault": {
+              "id": "/subscriptions/936195d3-5ada-4539-8819-d6e3ab174ef3/resourcegroups/lab1/providers/Microsoft.KeyVault/vaults/keyv0101"
+            },
+            "secretName": "DefaultUbuntuPassword"
+          }
+      },
+      "dnsLabelPrefix": {
+        "value": "hellohello22"
+      }
+    }
+  }

@@ -123,7 +123,7 @@
               "sourceAddressPrefix": "*",
               "sourcePortRange": "*",
               "destinationAddressPrefix": "*"
-              "vnetID": "[resourceId(variables('storageAccountType')),'network/subnet'variables('variables()')]"
+              
             }
           }
         ]
