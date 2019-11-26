@@ -119,7 +119,7 @@
                   "version": "latest"
               },
               "osDisk": {
-                  "name": "windowsVM1OSDisk",
+                  "name": "[concat('windowsVM1OSDisk-', copyIndex())]",
                   "caching": "ReadWrite",
                   "createOption": "FromImage",
                   "diskSizeGB": 500
@@ -127,7 +127,7 @@
               "dataDisks": [
                   {
                       "lun": 1,
-                      "name": "Disk1",
+                      "name": "[concat('Disk-', copyIndex())]",
                       "diskSizeGB": 500,
                       "createOption": "Empty",
                       "managedDisk":{
