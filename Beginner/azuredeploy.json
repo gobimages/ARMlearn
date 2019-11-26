@@ -117,7 +117,7 @@
                       "diskSizeGB": 500,
                       "createOption": "Empty",
                       "managedDisk":{
-                          "storageAccountType": "Premium_LRS"
+                          "storageAccountType": "Standard_LRS"
                       }
 
                   }
