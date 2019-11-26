@@ -37,24 +37,32 @@
         }
     },
   {
-      "name": "ADpublicIP",
+      "copy": {
+          "name":"pubip",
+          "count": 1
+      },
+      "name": "[concat('ADPublicIP-',copyIndex())]",
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2018-08-01",
       "location": "[resourceGroup().location]",
       "tags": {
-          "displayName": "AD"
+          "displayName": "[concat('AD',copyIndex())]"
       },
       "properties": {
           "publicIPAllocationMethod": "Static"
       }
   },
   {
-      "name": "ADnic",
+      "copy": {
+          "name":"nicip",
+          "count": 1
+      },
+      "name": "[concat('ADnic-',copyIndex())]",
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2018-08-01",
       "location": "[resourceGroup().location]",
       "tags": {
-          "displayName": "ADnic"
+          "displayName": "[concat('ADnic',copyIndex())]"
       },
       "dependsOn": [
           "[resourceId('Microsoft.Network/virtualNetworks', 'VNet-Inside')]"
@@ -62,11 +70,11 @@
       "properties": {
           "ipConfigurations": [
               {
-                  "name": "ADnicIP",
+                  "name": "[concat('ADnicIP-',copyIndex())]",
                   "properties": {
                       "privateIPAllocationMethod": "Dynamic",
                       "publicIPAddress":{
-                          "id":"[resourceId('Microsoft.Network/publicIPAddresses','ADpublicIP')]"
+                          "id":"[resourceId('Microsoft.Network/publicIPAddresses',concat('ADPublicIP-',copyIndex()))]"
                       },
                       "subnet": {
                           "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'VNet-Inside', 'AD-Subnet')]"
@@ -131,9 +139,6 @@
                   
               
           },
-          
-          
-          
           "networkProfile": {
               "networkInterfaces": [
                   {
