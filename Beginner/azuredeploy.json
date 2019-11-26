@@ -86,11 +86,7 @@
       }
   },
   {
-      "copy":{
-          "name": "VMcopy",
-          "count": 1
-      },
-
+      
       "name": "[concat('windowsVM1-',copyIndex())]",
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
@@ -100,6 +96,10 @@
       ],
       "tags": {
           "displayName": "[concat('AD-',copyIndex())]"
+      },
+      "copy":{
+          "name": "VMcopy",
+          "count": 1
       },
       "properties": {
           "hardwareProfile": {
