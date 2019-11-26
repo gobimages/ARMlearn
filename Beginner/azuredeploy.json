@@ -37,10 +37,6 @@
         }
     },
   {
-      "copy": {
-          "name":"pubip",
-          "count": 1
-      },
       "name": "[concat('ADPublicIP-',copyIndex())]",
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2018-08-01",
@@ -48,15 +44,16 @@
       "tags": {
           "displayName": "[concat('AD',copyIndex())]"
       },
+      "copy": {
+          "name":"pubip",
+          "count": 1
+      },
       "properties": {
           "publicIPAllocationMethod": "Static"
       }
   },
   {
-      "copy": {
-          "name":"nicip",
-          "count": 1
-      },
+      
       "name": "[concat('ADnic-',copyIndex())]",
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2018-08-01",
@@ -67,6 +64,10 @@
       "dependsOn": [
           "[resourceId('Microsoft.Network/virtualNetworks', 'VNet-Inside')]"
       ],
+      "copy": {
+          "name":"nicip",
+          "count": 1
+      },
       "properties": {
           "ipConfigurations": [
               {
