@@ -36,20 +36,109 @@
             ]
         }
     },
-    {
-        "name": "ADPubIP",
-        "type": "Microsoft.Network/publicIPPrefixes",
-        "apiVersion": "2018-08-01",
-        "location": "[resourceGroup().location]",
-        "tags": {},
-        "sku": {
-            "name": "Standard"
-        },
-        "properties": {
-            "publicIPAddressVersion": "IPv4",
-            "prefixLength": 28
-        }
-    }
+  {
+      "name": "ADpublicIP",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2018-08-01",
+      "location": "[resourceGroup().location]",
+      "tags": {
+          "displayName": "AD"
+      },
+      "properties": {
+          "publicIPAllocationMethod": "Static"
+      }
+  },
+  {
+      "name": "ADnic",
+      "type": "Microsoft.Network/networkInterfaces",
+      "apiVersion": "2018-08-01",
+      "location": "[resourceGroup().location]",
+      "tags": {
+          "displayName": "ADnic"
+      },
+      "dependsOn": [
+          "[resourceId('Microsoft.Network/virtualNetworks', 'VNet-Inside')]"
+      ],
+      "properties": {
+          "ipConfigurations": [
+              {
+                  "name": "ADnicIP",
+                  "properties": {
+                      "privateIPAllocationMethod": "Dynamic",
+                      "publicIPAddress":{
+                          "id":"[resourceId('Microsoft.Network/publicIPAddresses','ADpublicIP')]"
+                      },
+                      "subnet": {
+                          "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'VNet-Inside', 'AD-Subnet')]"
+                      }
+
+                  }
+              }
+          ]
+      }
+  },
+  {
+      "name": "windowsVM1",
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2019-07-01",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[resourceId('Microsoft.Network/networkInterfaces', 'ADnic')]"
+      ],
+      "tags": {
+          "displayName": "AD"
+      },
+      "properties": {
+          "hardwareProfile": {
+              "vmSize": "Standard_A2"
+          },
+          "osProfile": {
+              "computerName": "AD",
+              "adminUsername": "Gobinath",
+              "adminPassword": "Mageswaran225"
+          },
+          "storageProfile": {
+              "imageReference": {
+                  "publisher": "MicrosoftWindowsServer",
+                  "offer": "WindowsServer",
+                  "sku": "2012-R2-Datacenter",
+                  "version": "latest"
+              },
+              "osDisk": {
+                  "name": "windowsVM1OSDisk",
+                  "caching": "ReadWrite",
+                  "createOption": "FromImage",
+                  "diskSizeGB": 500
+              } ,
+              "dataDisks": [
+                  {
+                      "lun": 0,
+                      "name": "Disk1",
+                      "diskSizeGB": 500,
+                      "managedDisk":{
+                          "storageAccountType": "Premium_LRS"
+                      }
+
+                  }
+              ]
+
+                  
+              
+          },
+          
+          
+          
+          "networkProfile": {
+              "networkInterfaces": [
+                  {
+                      "id": "[resourceId('Microsoft.Network/networkInterfaces', 'ADnic')]"
+                  }
+              ]
+          }
+      },
+      "resources": [
+      ]
+  }
     ],
     "outputs": {},
     "functions": []
