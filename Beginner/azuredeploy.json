@@ -115,6 +115,7 @@
                       "lun": 0,
                       "name": "Disk1",
                       "diskSizeGB": 500,
+                      "createOption": "Attached",
                       "managedDisk":{
                           "storageAccountType": "Premium_LRS"
                       }
