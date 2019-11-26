@@ -1,0 +1,56 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
+    "variables": {
+    },
+    "resources": [
+        {
+        "name": "VNet-Inside",
+        "type": "Microsoft.Network/virtualNetworks",
+        "apiVersion": "2018-08-01",
+        "location": "[resourceGroup().location]",
+        "tags": {
+            "displayName": "VNet-Inside"
+        },
+        "properties": {
+            "addressSpace": {
+                "addressPrefixes": [
+                    "10.0.0.0/16"
+                ]
+            },
+            "subnets": [
+                {
+                    "name": "AD-Subnet",
+                    "properties": {
+                        "addressPrefix": "10.0.0.0/24"
+                    }
+                },
+                {
+                    "name": "DB-Subnet",
+                    "properties": {
+                        "addressPrefix": "10.0.1.0/24"
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "ADPubIP",
+        "type": "Microsoft.Network/publicIPPrefixes",
+        "apiVersion": "2018-08-01",
+        "location": "[resourceGroup().location]",
+        "tags": {},
+        "sku": {
+            "name": "Standard"
+        },
+        "properties": {
+            "publicIPAddressVersion": "IPv4",
+            "prefixLength": 28
+        }
+    }
+    ],
+    "outputs": {},
+    "functions": []
+}
