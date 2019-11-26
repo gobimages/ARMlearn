@@ -46,7 +46,7 @@
       },
       "copy": {
           "name":"pubip",
-          "count": 1
+          "count": 2
       },
       "properties": {
           "publicIPAllocationMethod": "Static"
@@ -66,7 +66,7 @@
       ],
       "copy": {
           "name":"nicip",
-          "count": 1
+          "count": 2
       },
       "properties": {
           "ipConfigurations": [
@@ -100,7 +100,7 @@
       },
       "copy":{
           "name": "VMcopy",
-          "count": 1
+          "count": 2
       },
       "properties": {
           "hardwareProfile": {
