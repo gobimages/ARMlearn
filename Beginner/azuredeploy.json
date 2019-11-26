@@ -142,7 +142,7 @@
           "networkProfile": {
               "networkInterfaces": [
                   {
-                      "id": "[resourceId('Microsoft.Network/networkInterfaces', 'ADnic')]"
+                      "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('ADnic-',copyIndex()))]"
                   }
               ]
           }
