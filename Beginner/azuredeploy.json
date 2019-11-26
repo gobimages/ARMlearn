@@ -78,7 +78,12 @@
       }
   },
   {
-      "name": "windowsVM1",
+      "copy":{
+          "name": "VMcopy",
+          "count": 1
+      },
+
+      "name": "[concat('windowsVM1-',copyIndex())]",
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2019-07-01",
       "location": "[resourceGroup().location]",
@@ -86,14 +91,14 @@
           "[resourceId('Microsoft.Network/networkInterfaces', 'ADnic')]"
       ],
       "tags": {
-          "displayName": "AD"
+          "displayName": "[concat('AD-',copyIndex())]"
       },
       "properties": {
           "hardwareProfile": {
               "vmSize": "Standard_A2"
           },
           "osProfile": {
-              "computerName": "AD",
+              "computerName": "[concat('AD-',copyIndex())]",
               "adminUsername": "Gobinath",
               "adminPassword": "Mageswaran225"
           },
