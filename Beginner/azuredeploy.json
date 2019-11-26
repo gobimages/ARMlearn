@@ -112,7 +112,7 @@
               } ,
               "dataDisks": [
                   {
-                      "lun": 0,
+                      "lun": 1,
                       "name": "Disk1",
                       "diskSizeGB": 500,
                       "createOption": "Attached",
