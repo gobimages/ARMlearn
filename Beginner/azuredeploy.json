@@ -115,7 +115,7 @@
                       "lun": 1,
                       "name": "Disk1",
                       "diskSizeGB": 500,
-                      "createOption": "FromImage",
+                      "createOption": "Empty",
                       "managedDisk":{
                           "storageAccountType": "Premium_LRS"
                       }
