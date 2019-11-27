@@ -7,18 +7,13 @@
            "metadata": {
                 "description": "description"
             }   
-        },
-         "VNet-Inside2": {
-               "type": "string",
-               "metadata": {
-                    "description": "description"
-                }
-            }
+        }
+         
     },
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('DPPublicIP')]",
+            "name": "DPPublicIP",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2018-08-01",
             "location": "[resourceGroup().location]",
@@ -35,8 +30,8 @@
             "apiVersion": "2018-08-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('DPPublicIP'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNet-Inside2'))]"
+                "[resourceId('Microsoft.Network/publicIPAddresses', 'DPPublicIP')]",
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNet-Inside'))]"
             ],
             "tags": {
                 "displayName": "DBnic"
@@ -48,10 +43,10 @@
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('DPPublicIP'))]"
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'DPPublicIP')]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('VNet-Inside2'), 'DB-Subnet')]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('VNet-Inside'), 'DB-Subnet')]"
                             }
                         }
                     }

@@ -22,8 +22,7 @@
           "uri":"https://raw.githubusercontent.com/gobimages/ARMlearn/master/Beginner/LinkedTemplate.json"
       },
       "parameters": {
-          "DPPublicIP":{"Value":"DPPublicIP"},
-          "VNet-Inside2":{"Value":"[parameters('VNet-Inside')]"}
+          "VNet-Inside":{"Value":"[parameters('VNet-Inside')]"}
           
       }
   }
