@@ -19,7 +19,7 @@
   "properties": {
       "mode": "Incremental",
       "templateLink": {
-          "uri":"https://github.com/gobimages/ARMlearn/blob/master/Beginner/LinkedTemplate.json"
+          "uri":"https://raw.githubusercontent.com/gobimages/ARMlearn/master/Beginner/LinkedTemplate.json"
       },
       "parameters": {
       }
