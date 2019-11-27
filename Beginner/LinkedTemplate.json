@@ -12,21 +12,6 @@
     "variables": {},
     "resources": [
         {
-  "name": "linkedTemplate",
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2018-05-01",
-  "properties": {
-      "mode": "Incremental",
-      "templateLink": {
-          "uri":"https://github.com/gobimages/ARMlearn/blob/master/Beginner/azuredeploy.json"
-      },
-      "parameters": {
-          "VNet-Inside":{"value": "VNet-Inside"}
-      }
-  }
-},
-        
-        {
             "name": "[parameters('DPPublicIP')]",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2018-08-01",
@@ -45,7 +30,7 @@
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('DPPublicIP'))]",
-                "linkedTemplate"
+                "[resourceId('Microsoft.Network/virtualNetworks', 'VNet-Inside')]"
             ],
             "tags": {
                 "displayName": "DBnic"
@@ -60,7 +45,7 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('DPPublicIP'))]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'linkedTemplate', 'DB-Subnet')]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'VNet-Inside', 'DB-Subnet')]"
                             }
                         }
                     }
