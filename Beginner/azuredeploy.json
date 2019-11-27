@@ -2,12 +2,18 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "VNet-Inside": {
+           "type": "string",
+           "metadata": {
+                "description": "description"
+            }
+        }
     },
     "variables": {
     },
     "resources": [
         {
-        "name": "VNet-Inside",
+        "name": "[parameters('VNet-Inside')]",
         "type": "Microsoft.Network/virtualNetworks",
         "apiVersion": "2018-08-01",
         "location": "[resourceGroup().location]",
