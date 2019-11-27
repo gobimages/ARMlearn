@@ -45,7 +45,7 @@
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('DPPublicIP'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', 'VNet-Inside')]"
+                "linkedTemplate"
             ],
             "tags": {
                 "displayName": "DBnic"
@@ -60,7 +60,7 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('DPPublicIP'))]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'VNet-Inside', 'DB-Subnet')]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'linkedTemplate', 'DB-Subnet')]"
                             }
                         }
                     }
