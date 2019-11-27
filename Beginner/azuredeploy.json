@@ -23,7 +23,7 @@
       },
       "parameters": {
           "DPPublicIP":{"Value":"DPPublicIP"},
-          "VNet-Inside":{"Value":"[parameters('VNet-Inside')]"}
+          "VNet-Inside":{"Value":"VNet-Inside"}
       }
   }
 },
