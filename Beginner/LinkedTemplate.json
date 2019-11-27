@@ -21,8 +21,7 @@
           "uri":"https://github.com/gobimages/ARMlearn/blob/master/Beginner/azuredeploy.json"
       },
       "parameters": {
-          "storageAccountName":{"value": "[variables('storageAccountName')]"},
-          "location":{"value": "[parameters('location')]"}
+          "VNet-Inside":{"value": "VNet-Inside"}
       }
   }
 },
