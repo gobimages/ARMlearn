@@ -22,6 +22,7 @@
           "uri":"https://raw.githubusercontent.com/gobimages/ARMlearn/master/Beginner/LinkedTemplate.json"
       },
       "parameters": {
+          "DPPublicIP":{"Value":"DPPublicIP"}
       }
   }
 },
