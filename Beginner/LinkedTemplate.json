@@ -6,9 +6,14 @@
            "type": "string",
            "metadata": {
                 "description": "description"
+            }   
+        },
+         "VNet-Inside2": {
+               "type": "string",
+               "metadata": {
+                    "description": "description"
+                }
             }
-            
-        }
     },
     "variables": {},
     "resources": [
@@ -31,7 +36,7 @@
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('DPPublicIP'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNet-Inside'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNet-Inside2'))]"
             ],
             "tags": {
                 "displayName": "DBnic"
@@ -46,7 +51,7 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('DPPublicIP'))]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('VNet-Inside'), 'DB-Subnet')]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('VNet-Inside2'), 'DB-Subnet')]"
                             }
                         }
                     }
