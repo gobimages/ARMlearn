@@ -83,7 +83,7 @@
           "displayName": "[concat('ADnic',copyIndex())]"
       },
       "dependsOn": [
-          "[resourceId('Microsoft.Network/virtualNetworks', 'VNet-Inside')]"
+          "[resourceId('Microsoft.Network/virtualNetworks', parameters('VNet-Inside'))]"
       ],
       "copy": {
           "name":"nicip",
@@ -99,7 +99,7 @@
                           "id":"[resourceId('Microsoft.Network/publicIPAddresses',concat('ADPublicIP-',copyIndex()))]"
                       },
                       "subnet": {
-                          "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'VNet-Inside', 'AD-Subnet')]"
+                          "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('VNet-Inside'), 'AD-Subnet')]"
                       }
 
                   }
