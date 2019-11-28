@@ -6,21 +6,7 @@
     },
     "variables": {},
     "resources": [
-        {
-  "name": "linkedTemplate",
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2018-05-01",
-  "properties": {
-      "mode": "Incremental",
-      "templateLink": {
-          "uri":"https://raw.githubusercontent.com/gobimages/ARMlearn/master/Beginner/azuredeploy.json"
-      },
-      "parameters": {
-          "VNet-Inside": {"Value":"[parameters('VNet-Inside')]"}
-          
-      }
-  }
-},
+      
         {
             "name": "DPPublicIP",
             "type": "Microsoft.Network/publicIPAddresses",
