@@ -22,7 +22,7 @@
           "uri":"https://raw.githubusercontent.com/gobimages/ARMlearn/master/Beginner/LinkedTemplate.json"
       },
       "parameters": {
-          "VNet-Inside":{"Value":"[parameters('VNet-Inside')]"}
+          
           
       }
   }
